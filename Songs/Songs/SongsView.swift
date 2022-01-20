@@ -27,11 +27,16 @@ struct SongsView: View {
                                 Spacer()
                                 Text(song.artist?.firstName ?? "No artist")
                             }
+                        }.onTapGesture {
+                            viewModel.selectedSong = song
                         }
                     }.onDelete { offsets in
                         viewModel.deleteSongs(at: offsets)
                     }
                 }
+            }
+            .sheet(item: $viewModel.selectedSong) { song in
+                SongDetailView(song: song)
             }
             .listStyle(.insetGrouped)
             .animation(.easeInOut, value: viewModel.songs)

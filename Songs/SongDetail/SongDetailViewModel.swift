@@ -9,8 +9,8 @@ import Foundation
 
 class SongDetailViewModel: ObservableObject {
     @Published var song: Song?
-
+    
     init() {
-        
+
     }
 }

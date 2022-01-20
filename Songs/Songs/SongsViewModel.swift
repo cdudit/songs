@@ -10,6 +10,7 @@ import SwiftUI
 class SongsViewModel: ObservableObject {
     @Published var showAddSongView: Bool = false
     @Published var songs: [Song] = []
+    @Published var selectedSong: Song? = nil
     
     init() {
         fetchSongs()
