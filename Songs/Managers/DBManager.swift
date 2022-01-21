@@ -86,22 +86,13 @@ struct DBManager {
         rate: Int64,
         releaseDate: Date,
         isFavorite: Bool = false,
+        artist: Artist,
         lyrics: String?,
         coverURL: URL?
     ) -> Result<Song, Error> {
         let context = container.viewContext
         
-        let song = Song(entity: Song.entity(),
-                        insertInto: context)
-        
-        
-        let artistsRes = getAllArtists()
-        var artist: Artist? = nil
-        
-        switch artistsRes {
-        case .failure: artist = nil
-        case .success(let artists): artist = artists.first
-        }
+        let song = Song(entity: Song.entity(), insertInto: context)
         
         song.title = title
         song.releaseDate = releaseDate

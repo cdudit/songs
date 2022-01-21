@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ArtistsView: View {
     @ObservedObject private var viewModel = ArtistsViewModel()
+    @Binding var selected: Artist?
+
+    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
     
     var body: some View {
         NavigationView {
@@ -21,7 +24,10 @@ struct ArtistsView: View {
                     }
                 } else {
                     ForEach(viewModel.artists) { artist in
-                        Text("\(artist.firstName ?? "") \(artist.lastName ?? "")")
+                        Text("\(artist.firstName ?? "") \(artist.lastName ?? "")").onTapGesture {
+                            selected = artist
+                            mode.wrappedValue.dismiss()
+                        }
                     }.onDelete { offsets in
                         viewModel.deleteArtists(at: offsets)
                     }

@@ -34,7 +34,7 @@ struct SongDetailView: View {
                 
                 Section(header: Text("Artist")) {
                     HStack {
-                        Text("Fist name")
+                        Text("First name")
                         Spacer()
                         Text(song.artist?.firstName ?? "")
                     }

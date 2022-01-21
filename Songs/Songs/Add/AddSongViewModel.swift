@@ -14,7 +14,7 @@ class AddSongViewModel: ObservableObject {
     @Published var isFavorite = false
     @Published var showAlert = false
     @Published var artists: [Artist] = []
-    @Published var selectedArtist: Int = 0
+    @Published var selectedArtist: Artist? = nil
     var alertMessage = ""
     var alertTitle = ""
     
@@ -36,6 +36,7 @@ class AddSongViewModel: ObservableObject {
             rate: Int64(rate),
             releaseDate: songDate,
             isFavorite: isFavorite,
+            artist: selectedArtist.unsafelyUnwrapped,
             lyrics: "blablabla",
             coverURL: URL(string: "https://api.lorem.space/image/album")
         )

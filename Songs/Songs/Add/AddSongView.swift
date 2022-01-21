@@ -23,8 +23,8 @@ struct AddSongView: View {
                 }
                 
                 Section {
-                    NavigationLink(destination: ArtistsView()) {
-                        Text("Pick an artist")
+                    NavigationLink(destination: ArtistsView(selected: $viewModel.selectedArtist)) {
+                        Text("\(viewModel.selectedArtist?.firstName ?? "Pick an artist") \(viewModel.selectedArtist?.lastName ?? "")")
                     }
                 } header: {
                     Text("Artist")
