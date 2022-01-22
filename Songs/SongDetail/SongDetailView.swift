@@ -11,15 +11,23 @@ struct SongDetailView: View {
     @ObservedObject private var viewModel = SongDetailViewModel()
     @State var song: Song
     
+    init(song: Song) {
+        self.song = song
+        viewModel.image = viewModel.getImage(song: song)
+        UINavigationBar.appearance().backgroundColor = viewModel.getAverageUIColor() ?? UIColor()
+    }
+    
     var body: some View {
         NavigationView {
             VStack {
-                AsyncImage(url: song.coverURL)
+                Image(uiImage: viewModel.image)
+                    .resizable()
                     .frame(width:100, height:100)
                     .scaledToFill()
-                    .cornerRadius(100)
+                    .clipShape(Circle())
+                    .padding(.top, 20)
                 List {
-                    Section(header: Text("Song")) {
+                    Section(header: Text("Song").foregroundColor(viewModel.getColor())) {
                         HStack {
                             Text("Title")
                             Spacer()
@@ -37,7 +45,7 @@ struct SongDetailView: View {
                         }
                     }
                     
-                    Section(header: Text("Artist")) {
+                    Section(header: Text("Artist").foregroundColor(viewModel.getColor())) {
                         HStack {
                             Text("First name")
                             Spacer()
