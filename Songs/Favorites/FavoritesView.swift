@@ -23,8 +23,9 @@ struct FavoritesView: View {
                     ForEach(viewModel.songs.indices) { index in
                         HStack {
                             let song = viewModel.songs[index]
-                            if let title = song.title {
-                                Text("\(title) by \(song.artist?.firstName ?? "unkown")")
+                            if let title = song.title,
+                               let artist = song.artist {
+                                Text("\(title) by \(viewModel.getArtistLabel(for: artist))")
                                 Spacer()
                                 Image(systemName: "star.fill")
                                     .foregroundColor(.accentColor)

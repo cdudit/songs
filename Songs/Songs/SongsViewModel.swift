@@ -16,6 +16,10 @@ class SongsViewModel: ObservableObject {
         fetchSongs()
     }
     
+    func getArtistLabel(for artist: Artist) -> String {
+        return "\(artist.firstName ?? "") \(artist.lastName ?? "")"
+    }
+    
     func fetchSongs() {
         let songsResult = DBManager.shared.getAllSongs()
         switch songsResult {

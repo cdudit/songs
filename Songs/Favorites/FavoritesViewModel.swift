@@ -14,6 +14,10 @@ class FavoritesViewModel: ObservableObject {
         fetchFavoritesSongs()
     }
     
+    func getArtistLabel(for artist: Artist) -> String {
+        return "\(artist.firstName ?? "") \(artist.lastName ?? "")"
+    }
+    
     func fetchFavoritesSongs() {
         let songsResults = DBManager.shared.getFavoritesSongs()
         switch songsResults {

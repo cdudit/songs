@@ -22,10 +22,11 @@ struct SongsView: View {
                 } else {
                     ForEach(viewModel.songs) { song in
                         HStack {
-                            if let title = song.title {
+                            if let title = song.title,
+                               let artist = song.artist {
                                 Text(title)
                                 Spacer()
-                                Text(song.artist?.firstName ?? "No artist")
+                                Text(viewModel.getArtistLabel(for: artist))
                             }
                         }.onTapGesture {
                             viewModel.selectedSong = song
