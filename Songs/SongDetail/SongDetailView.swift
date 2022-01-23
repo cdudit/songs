@@ -61,6 +61,8 @@ struct SongDetailView: View {
             }
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(song.title ?? "")
+        }.onDisappear {
+            UINavigationBar.appearance().backgroundColor = nil
         }
     }
 }
