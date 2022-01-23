@@ -21,6 +21,10 @@ class AddSongViewModel: ObservableObject {
     init() {
         fetchArtists()
     }
+    
+    func canValidate() -> Bool {
+        return !songTitle.isEmpty && songTitle != "" && selectedArtist != nil
+    }
 
     func fetchArtists() {
         let artistsResult = DBManager.shared.getAllArtists()

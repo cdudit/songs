@@ -20,8 +20,10 @@ struct AddArtistView: View {
                 }
                 
                 Button {
-                    viewModel.addArtist()
-                    presentationMode.wrappedValue.dismiss()
+                    if viewModel.canValidate() {
+                        viewModel.addArtist()
+                        presentationMode.wrappedValue.dismiss()
+                    }
                 } label: {
                     HStack {
                         Spacer()

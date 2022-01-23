@@ -19,4 +19,8 @@ class AddArtistViewModel: ObservableObject {
             songs: []
         )
     }
+    
+    func canValidate() -> Bool {
+        return !firstName.isEmpty && firstName != "" && !lastName.isEmpty && lastName != ""
+    }
 }

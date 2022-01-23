@@ -36,8 +36,10 @@ struct AddSongView: View {
                         .tint(.accentColor)
                 }
                 
-                Button {
-                    viewModel.addSong()
+                Button() {
+                    if viewModel.canValidate() {
+                        viewModel.addSong()
+                    }
                 } label: {
                     HStack {
                         Spacer()

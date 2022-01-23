@@ -35,6 +35,7 @@ struct ArtistsView: View {
             }
             .listStyle(.insetGrouped)
             .animation(.easeInOut, value: viewModel.artists)
+            .navigationBarHidden(true)
         }
         .sheet(isPresented: $viewModel.showAddArtistView, onDismiss: {
             viewModel.fetchArtists()
